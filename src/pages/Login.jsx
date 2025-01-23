@@ -3,10 +3,10 @@ import React, { useEffect, useRef } from 'react';
 const Login = () => {
     const canvasRef = useRef(null);
     const animationFrameRef = useRef();
-    const currentPosRef = useRef({ leftX: 0, leftY: 0, rightX: 0, rightY: 0 });
-    const targetPosRef = useRef({ leftX: 0, leftY: 0, rightX: 0, rightY: 0 });
     const eyePositionsRef = useRef({
         left: { outer: { x: 275, y: 230 }, inner: { x: 275, y: 230 } },
+        left1: { outer: { x: 210, y: 105 }, inner: { x: 210, y: 105 } },
+        right1: { outer: { x: 240, y: 105 }, inner: { x: 240, y: 105 } },
         right: { outer: { x: 295, y: 230 }, inner: { x: 295, y: 230 } }
     });
 
@@ -18,10 +18,31 @@ const Login = () => {
         canvas.width = container.offsetWidth;
         canvas.height = container.offsetHeight;
 
+        // window.addEventListener('mousemove', function (e) {
+        //     console.log(e);
+        //     mouse.x = e.x;
+        //     mouse.y = e.y;
+        //     console.log(mouse);
+        
+        
+        // });
+
         const eyes = {
             left: {
                 baseX: 275,
                 baseY: 230,
+                outerRadius: 7,
+                innerRadius: 4
+            },
+            left1: {
+                baseX: 210,
+                baseY: 105,
+                outerRadius: 7,
+                innerRadius: 4
+            },
+            right1: {
+                baseX: 240,
+                baseY: 105,
                 outerRadius: 7,
                 innerRadius: 4
             },
@@ -37,27 +58,26 @@ const Login = () => {
             return start + (end - start) * factor;
         }
 
-        function calculateEyePosition(mouseX, mouseY, eye) {
-            const outerOvalWidth = 20;
-            const outerOvalHeight = 20;
-            const leftOffset = -20; // Shifts oval path left
-            
+        function calculateEyePosition(mouseX, mouseY, eye, extra) {
+            const outerOvalWidth = 20 + extra;
+            const outerOvalHeight = 20 + extra/3;
+            const leftOffset = -20;
+
             let dx = mouseX - eye.baseX;
             let dy = mouseY - eye.baseY;
             let angle = Math.atan2(dy, dx);
-            
-            // Add leftOffset to baseX for oval calculation
+
             let outerX = (eye.baseX + leftOffset) + Math.cos(angle) * outerOvalWidth;
             let outerY = eye.baseY + Math.sin(angle) * outerOvalHeight;
-            
+
             let innerDx = mouseX - outerX;
             let innerDy = mouseY - outerY;
             let innerAngle = Math.atan2(innerDy, innerDx);
             let innerDistance = 2;
-            
+
             let innerX = outerX + Math.cos(innerAngle) * innerDistance;
             let innerY = outerY + Math.sin(innerAngle) * innerDistance;
-            
+
             return {
                 outer: { x: outerX, y: outerY },
                 inner: { x: innerX, y: innerY }
@@ -89,7 +109,6 @@ const Login = () => {
                 shineRadius, 0, Math.PI * 2);
             c.fillStyle = 'rgba(255, 255, 255, 0.8)';
             c.fill();
-
         }
 
         function animate() {
@@ -100,9 +119,13 @@ const Login = () => {
                 c.drawImage(img, 0, -90, canvas.width, canvas.height);
             }
 
-            // Draw eyes with current positions
+            // Draw all three eyes
             drawEye(eyePositionsRef.current.left,
                 { outerRadius: eyes.left.outerRadius, innerRadius: eyes.left.innerRadius });
+            drawEye(eyePositionsRef.current.left1,
+                { outerRadius: eyes.left1.outerRadius, innerRadius: eyes.left1.innerRadius });
+            drawEye(eyePositionsRef.current.right1,
+                { outerRadius: eyes.right1.outerRadius, innerRadius: eyes.right1.innerRadius });
             drawEye(eyePositionsRef.current.right,
                 { outerRadius: eyes.right.outerRadius, innerRadius: eyes.right.innerRadius });
 
@@ -114,8 +137,10 @@ const Login = () => {
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
 
-            const leftPos = calculateEyePosition(mouseX, mouseY, eyes.left);
-            const rightPos = calculateEyePosition(mouseX, mouseY, eyes.right);
+            const leftPos = calculateEyePosition(mouseX, mouseY, eyes.left, 0);
+            const left1Pos = calculateEyePosition(mouseX, mouseY, eyes.left1, 10);
+            const right1Pos = calculateEyePosition(mouseX, mouseY, eyes.right1, 10);
+            const rightPos = calculateEyePosition(mouseX, mouseY, eyes.right, 0);
 
             // Smooth transition to new positions
             const easing = 0.1;
@@ -128,6 +153,26 @@ const Login = () => {
                     inner: {
                         x: lerp(eyePositionsRef.current.left.inner.x, leftPos.inner.x, easing),
                         y: lerp(eyePositionsRef.current.left.inner.y, leftPos.inner.y, easing)
+                    }
+                },
+                left1: {
+                    outer: {
+                        x: lerp(eyePositionsRef.current.left1.outer.x, left1Pos.outer.x, easing),
+                        y: lerp(eyePositionsRef.current.left1.outer.y, left1Pos.outer.y, easing)
+                    },
+                    inner: {
+                        x: lerp(eyePositionsRef.current.left1.inner.x, left1Pos.inner.x, easing),
+                        y: lerp(eyePositionsRef.current.left1.inner.y, left1Pos.inner.y, easing)
+                    }
+                },
+                right1: {
+                    outer: {
+                        x: lerp(eyePositionsRef.current.right1.outer.x, right1Pos.outer.x, easing),
+                        y: lerp(eyePositionsRef.current.right1.outer.y, right1Pos.outer.y, easing)
+                    },
+                    inner: {
+                        x: lerp(eyePositionsRef.current.right1.inner.x, right1Pos.inner.x, easing),
+                        y: lerp(eyePositionsRef.current.right1.inner.y, right1Pos.inner.y, easing)
                     }
                 },
                 right: {
