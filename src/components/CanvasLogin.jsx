@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import logindesign from '../assets/logindesign.jpg'
 
 function CanvasLogin() {
     const canvasRef = useRef(null);
@@ -10,10 +11,12 @@ function CanvasLogin() {
         right: { outer: { x: 295, y: 230 }, inner: { x: 295, y: 230 } },
         blackLeft: { outer: { x: 170, y: 410 } },
         blackRight: { outer: { x: 210, y: 410 } },
-        singleBlack: { outer: { x: 310, y: 320 } },
+        singleBlack: { outer: { x: 310, y: 310 } },
+        singleBlack2: { outer: { x: 330, y: 310 } },
         // Add initial position for semi-circle
         semiCircle: { x: 190, y: 430 },
-        curvedRectangle: { x: 225, y: 125 }
+        curvedRectangle: { x: 225, y: 125 },
+        OpenMouth: { x: 320, y: 340 },
     });
 
     useEffect(() => {
@@ -60,7 +63,12 @@ function CanvasLogin() {
                 outerRadius: 6
             },
             singleBlack: {
-                baseX: 320,
+                baseX: 310,
+                baseY: 310,
+                outerRadius: 4
+            },
+            singleBlack2: {
+                baseX: 330,
                 baseY: 310,
                 outerRadius: 4
             },
@@ -74,6 +82,11 @@ function CanvasLogin() {
                 baseX: 225,
                 baseY: 125,
                 radius: 20
+            },
+            OpenMouth: {
+                baseX: 310,
+                baseY: 340,
+                radius: 6
             }
         };
 
@@ -82,7 +95,7 @@ function CanvasLogin() {
         function drawCurvedRectangle(position) {
             //  Set drawing style
             c.strokeStyle = '#000000';
-            c.lineWidth = 10;
+            c.lineWidth = 3;
 
             // Begin drawing path
             c.beginPath();
@@ -93,8 +106,8 @@ function CanvasLogin() {
                 position.x,  // x-coordinate of the center
                 position.y,  // y-coordinate of the center (above canvas)
                 eyes.curvedRectangle.radius,  // radius
-                Math.PI * 0.25,   // start angle (in radians)
-                Math.PI * 0.75,   // end angle (in radians)
+                Math.PI * 0.30,   // start angle (in radians)
+                Math.PI * 0.70,   // end angle (in radians)
                 false  // counterclockwise
             );
 
@@ -102,8 +115,27 @@ function CanvasLogin() {
             c.stroke();
         }
 
-        function calculateSemiCirclePosition(mouseX, mouseY, base) {
-            const dx = mouseX - base.baseX;
+        function drawOpenMouth(position) {
+            c.strokeStyle = '#000000';
+            c.lineWidth = 3;
+
+            c.beginPath();
+
+            c.ellipse(
+                position.x,
+                position.y,
+                eyes.OpenMouth.radius,
+                eyes.OpenMouth.radius * 1.5,
+                Math.PI * 2,
+                Math.PI * 2,
+                false
+            );
+
+            c.stroke();
+        }
+
+        function calculateSemiCirclePosition(mouseX, mouseY, base, extra) {
+            const dx = mouseX - base.baseX + extra;
             const dy = mouseY - base.baseY;
             const distance = Math.sqrt(dx * dx + dy * dy);
             const maxMove = 10; // Maximum movement distance
@@ -205,6 +237,8 @@ function CanvasLogin() {
 
             drawCurvedRectangle(eyePositionsRef.current.curvedRectangle);
 
+            drawOpenMouth(eyePositionsRef.current.OpenMouth);
+
             // Draw regular eyes
             drawEye(eyePositionsRef.current.left,
                 { outerRadius: eyes.left.outerRadius, innerRadius: eyes.left.innerRadius });
@@ -222,6 +256,8 @@ function CanvasLogin() {
                 { outerRadius: eyes.blackRight.outerRadius }, true);
             drawEye(eyePositionsRef.current.singleBlack,
                 { outerRadius: eyes.singleBlack.outerRadius }, true);
+            drawEye(eyePositionsRef.current.singleBlack2,
+                { outerRadius: eyes.singleBlack2.outerRadius }, true);
 
             animationFrameRef.current = requestAnimationFrame(animate);
         }
@@ -237,9 +273,11 @@ function CanvasLogin() {
             const rightPos = calculateEyePosition(mouseX, mouseY, eyes.right, 0, 0);
             const blackLeftPos = calculateEyePosition(mouseX, mouseY, eyes.blackLeft, 15, 15);
             const blackRightPos = calculateEyePosition(mouseX, mouseY, eyes.blackRight, 15, 15);
-            const singleBlackPos = calculateEyePosition(mouseX, mouseY, eyes.singleBlack, 5, 12);
-            const semiCirclePos = calculateSemiCirclePosition(mouseX, mouseY, eyes.semiCircle);
-            const curvedRectanglePos = calculateSemiCirclePosition(mouseX, mouseY, eyes.curvedRectangle);
+            const singleBlackPos = calculateEyePosition(mouseX, mouseY, eyes.singleBlack, 0, 12);
+            const singleBlackPos2 = calculateEyePosition(mouseX, mouseY, eyes.singleBlack2, 0, 12);
+            const semiCirclePos = calculateSemiCirclePosition(mouseX, mouseY, eyes.semiCircle, 0);
+            const curvedRectanglePos = calculateSemiCirclePosition(mouseX, mouseY, eyes.curvedRectangle, 0);
+            const OpenMouthPos = calculateSemiCirclePosition(mouseX, mouseY, eyes.OpenMouth, 5);
 
             const easing = 0.1;
             eyePositionsRef.current = {
@@ -301,6 +339,12 @@ function CanvasLogin() {
                         y: lerp(eyePositionsRef.current.singleBlack.outer.y, singleBlackPos.outer.y, easing)
                     }
                 },
+                singleBlack2: {
+                    outer: {
+                        x: lerp(eyePositionsRef.current.singleBlack2.outer.x, singleBlackPos2.outer.x, easing),
+                        y: lerp(eyePositionsRef.current.singleBlack2.outer.y, singleBlackPos2.outer.y, easing)
+                    }
+                },
                 semiCircle: {
                     x: lerp(eyePositionsRef.current.semiCircle.x, semiCirclePos.x, easing),
                     y: lerp(eyePositionsRef.current.semiCircle.y, semiCirclePos.y, easing)
@@ -308,12 +352,16 @@ function CanvasLogin() {
                 curvedRectangle: {
                     x: lerp(eyePositionsRef.current.curvedRectangle.x, curvedRectanglePos.x, easing),
                     y: lerp(eyePositionsRef.current.curvedRectangle.y, curvedRectanglePos.y, easing)
+                },
+                OpenMouth: {
+                    x: lerp(eyePositionsRef.current.OpenMouth.x, OpenMouthPos.x, easing),
+                    y: lerp(eyePositionsRef.current.OpenMouth.y, OpenMouthPos.y, easing)
                 }
             };
         }
 
         const img = new Image();
-        img.src = 'https://cdn.dribbble.com/userupload/8432950/file/original-0c14504bd291054d76548cb015dff89a.png?resize=1024x768&vertical=center';
+        img.src = logindesign;
         img.onload = animate;
 
         window.addEventListener('mousemove', handleMouseMove);
