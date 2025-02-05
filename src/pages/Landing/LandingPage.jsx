@@ -29,7 +29,7 @@ const LandingPage = ({ isDarkMode, toggleDarkMode }) => {
           {isDarkMode ? <FaSun className="text-yellow-500" /> : <FaMoon className="text-white" />}
         </button>
         <h1 className={`text-4xl md:text-6xl font-normal mb-8 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-          Skills speak<br />louder than words
+          Skills speak<br />Louder than words
         </h1>
         <p className={`text-lg md:text-xl mb-12 max-w-3xl ${isDarkMode ? 'text-white' : 'text-black'}`}>
           We help companies develop the strongest tech teams around. We help candidates sharpen their tech skills and pursue job opportunities.
