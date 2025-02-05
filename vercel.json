@@ -1,7 +1,6 @@
-
 {
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "buildCommand": "yarn install && yarn build"
-}
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "buildCommand": "npm install && npm run build"
+  }
