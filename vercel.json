@@ -1,8 +1,6 @@
 {
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
+  "env": {
+    "NODE_ENV": "production"
   },
-  "buildCommand": "yarn install --legacy-peer-deps && yarn build"
+  "buildCommand": "yarn install && yarn build"
 }
