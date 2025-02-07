@@ -3,14 +3,14 @@ import CandidateCard from '../../components/LandingPageUI/CandidateCard.jsx';
 
 const SummaryReport = ({ isDarkMode }) => {
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <div className="mb-12">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+    <div className={`min-h-[50vh] md:min-h-[75vh] lg:min-h-screen ${isDarkMode ? 'bg-black' : 'bg-white'} py-8 md:py-16`}>
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="mb-8 md:mb-12">
+          <h1 className={`text-4xl md:text-5xl font-bold mb-4 md:mb-6 ${isDarkMode ? 'text-white' : 'text-black'}`}>
             Summary report
           </h1>
           
-          <p className={`text-xl mb-8 max-w-2xl ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
+          <p className={`text-xl mb-6 md:mb-8 max-w-2xl ${isDarkMode ? 'text-gray-400' : 'text-gray-700'}`}>
             Candidate skills performance
           </p>
         </div>

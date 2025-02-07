@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const Footer = ({ isDarkMode }) => {
   return (
-    <footer className={`py-10 px-4 sm:px-6 lg:px-8  text-gray-400 ${isDarkMode ?  'bg-gray-800 text-gray-400':'bg-black text-white' }`}>
+    <footer className={`py-10 px-4 sm:px-6 lg:px-8 text-gray-400 ${isDarkMode ? 'bg-gray-800 text-gray-400' : 'bg-black text-white'}`}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
         <div className="col-span-1 sm:col-span-1 lg:col-span-1">
           <h3 className="text-lg font-medium text-white">Products</h3>
