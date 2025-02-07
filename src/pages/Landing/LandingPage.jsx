@@ -11,9 +11,9 @@ import SummaryReport from '../../components/LandingPageUI/SummaryReport.jsx';
 
 const LandingPage = ({ isDarkMode, toggleDarkMode }) => {
   const dockItems = [
-    { title: 'Instagram', href: '/instagram', icon: <FaInstagram /> },
-    { title: 'Twitter', href: '/twitter', icon: <FaTwitter /> },
-    { title: 'Gmail', href: '/gmail', icon: <FaEnvelope /> },
+    { title: 'Instagram', href: 'https://www.instagram.com/codearena.csi/', icon: <FaInstagram /> },
+    { title: 'Twitter', href: 'https://x.com/arena_code_csi', icon: <FaTwitter /> },
+    { title: 'Gmail', href: 'mailto:codearena.csi@gmail.com', icon: <FaEnvelope /> },
   ];
 
   return (
