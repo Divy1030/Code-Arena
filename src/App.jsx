@@ -6,6 +6,8 @@ import CustomLineChart from './components/CustomLineChart'
 import CustomAreaGraph from './components/CustomAreaGraph'
 import CustomBarGraph from './components/CustomBarGraph'
 import CustomPieChart from './components/CustomPieChart'
+import CalendarView from './components/CalendarView'
+import CalendarDashboard from './components/CalendarDashboard'
 // import { ResponsiveContainer } from 'recharts'
 
 function App() {
@@ -13,12 +15,14 @@ function App() {
 
   return (
     <>
-      <Login/>
-      <CustomRadialBarChart/>
-      <CustomLineChart/>
-      <CustomAreaGraph/>
-      <CustomBarGraph/>
-      <CustomPieChart/>
+      {/* <Login/> */}
+      {/* <CustomRadialBarChart/> */}
+      {/* <CustomLineChart/> */}
+      {/* <CustomAreaGraph/> */}
+      {/* <CustomBarGraph/> */}
+      {/* <CustomPieChart/> */}
+      {/* <CalendarView/> */}
+      <CalendarDashboard/>
     </>
   )
 }

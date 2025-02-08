@@ -13,7 +13,6 @@ function CanvasLogin() {
         blackRight: { outer: { x: 210, y: 410 } },
         singleBlack: { outer: { x: 310, y: 310 } },
         singleBlack2: { outer: { x: 330, y: 310 } },
-        // Add initial position for semi-circle
         semiCircle: { x: 190, y: 430 },
         curvedRectangle: { x: 225, y: 125 },
         OpenMouth: { x: 320, y: 340 },
@@ -72,7 +71,6 @@ function CanvasLogin() {
                 baseY: 310,
                 outerRadius: 4
             },
-            // Add base position for semi-circle
             semiCircle: {
                 baseX: 190,
                 baseY: 430,
@@ -93,25 +91,19 @@ function CanvasLogin() {
         function calculateCurvedRectanglePosition(mouseX, mouseY, base) { }
 
         function drawCurvedRectangle(position) {
-            //  Set drawing style
             c.strokeStyle = '#000000';
             c.lineWidth = 3;
 
-            // Begin drawing path
             c.beginPath();
 
-            // Draw curved line using arc - flipped version
-            // Parameters: centerX, centerY, radius, startAngle, endAngle
             c.arc(
-                position.x,  // x-coordinate of the center
-                position.y,  // y-coordinate of the center (above canvas)
-                eyes.curvedRectangle.radius,  // radius
-                Math.PI * 0.30,   // start angle (in radians)
-                Math.PI * 0.70,   // end angle (in radians)
-                false  // counterclockwise
+                position.x, 
+                position.y,  
+                eyes.curvedRectangle.radius,  
+                Math.PI * 0.30,   
+                Math.PI * 0.70,   
+                false  
             );
-
-            // Draw the path
             c.stroke();
         }
 
@@ -138,7 +130,7 @@ function CanvasLogin() {
             const dx = mouseX - base.baseX + extra;
             const dy = mouseY - base.baseY;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            const maxMove = 10; // Maximum movement distance
+            const maxMove = 10; 
 
             let moveX = (dx / distance) * Math.min(distance * 0.1, maxMove) * 1.5;
             let moveY = (dy / distance) * Math.min(distance * 0.1, maxMove) * 1.5;
@@ -232,14 +224,12 @@ function CanvasLogin() {
                 c.drawImage(img, 0, -90, canvas.width, canvas.height);
             }
 
-            // Draw semi-circle first
             drawSemiCircle(eyePositionsRef.current.semiCircle);
 
             drawCurvedRectangle(eyePositionsRef.current.curvedRectangle);
 
             drawOpenMouth(eyePositionsRef.current.OpenMouth);
 
-            // Draw regular eyes
             drawEye(eyePositionsRef.current.left,
                 { outerRadius: eyes.left.outerRadius, innerRadius: eyes.left.innerRadius });
             drawEye(eyePositionsRef.current.left1,
@@ -249,7 +239,6 @@ function CanvasLogin() {
             drawEye(eyePositionsRef.current.right,
                 { outerRadius: eyes.right.outerRadius, innerRadius: eyes.right.innerRadius });
 
-            // Draw black eyes
             drawEye(eyePositionsRef.current.blackLeft,
                 { outerRadius: eyes.blackLeft.outerRadius }, true);
             drawEye(eyePositionsRef.current.blackRight,
@@ -380,45 +369,3 @@ function CanvasLogin() {
 }
 
 export default CanvasLogin
-
-// import React, { useEffect, useRef } from "react";
-
-// const CurvedRectangle = () => {
-//     const canvasRef = useRef(null);
-
-//     useEffect(() => {
-//         const canvas = canvasRef.current;
-//         const ctx = canvas.getContext('2d');
-
-//         if (ctx) {
-//             // Clear canvas
-//             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//             // Set drawing style
-//             ctx.strokeStyle = '#FF0000';
-//             ctx.lineWidth = 20;
-
-//             // Begin drawing path
-//             ctx.beginPath();
-
-//             // Draw curved line using arc - flipped version
-//             // Parameters: centerX, centerY, radius, startAngle, endAngle
-//             ctx.arc(
-//                 canvas.width / 2,  // x-coordinate of the center
-//                 -canvas.height,    // y-coordinate of the center (above canvas)
-//                 canvas.height * 1.8,  // radius
-//                 Math.PI * 0.15,   // start angle (in radians)
-//                 Math.PI * 0.85,   // end angle (in radians)
-//                 false  // counterclockwise
-//             );
-
-//             // Draw the path
-//             ctx.stroke();
-//         }
-//     }, []);
-
-//     return <canvas ref={canvasRef} width={300} height={250} style={{ display: "block", margin: "0 auto" }}></canvas>;
-// };
-
-// export default CurvedRectangle;
-
