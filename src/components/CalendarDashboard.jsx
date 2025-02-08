@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Calendar } from "../ui/Calendar"; // Updated path
+import { Card, CardContent } from "../ui/Card"; // Updated path
+import { Button } from "../ui/Button"; // Updated path
+import { Tabs, TabsList, TabsTrigger } from "../ui/Tabs"; // Updated path
+import { Avatar, AvatarImage } from "../ui/Avatar"; // Updated path
 import { motion } from "framer-motion";
 
 const events = [
