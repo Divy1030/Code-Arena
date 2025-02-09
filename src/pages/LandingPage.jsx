@@ -1,13 +1,13 @@
 import React from 'react';
-import SpotlightComponent from '../../components/LandingPageUI/SpotlightComponent.jsx';
-import SkillsSection from '../../components/LandingPageUI/SkillsSection.jsx';
-import FloatingDock from '../../components/animations/FloatingDock.jsx';
+import SpotlightComponent from '../components/LandingPageUI/SpotlightComponent.jsx';
+import SkillsSection from '../components/LandingPageUI/SkillsSection.jsx';
+import FloatingDock from '../components/animations/FloatingDock.jsx';
 import { FaInstagram, FaTwitter, FaEnvelope, FaSun, FaMoon } from 'react-icons/fa';
-import Hyperspeed from '../../components/animations/HyperSpeed/Hyperspeed.jsx';
-import ShinyText from '../../components/animations/ShinyText.jsx';
-import Footer from '../../components/ui/Footer.jsx';
-import FocusOnCode from '../../components/LandingPageUI/FocusOnCode.jsx';
-import SummaryReport from '../../components/LandingPageUI/SummaryReport.jsx';
+import Hyperspeed from '../components/animations/HyperSpeed/Hyperspeed.jsx';
+import ShinyText from '../components/animations/ShinyText.jsx';
+import Footer from '../components/common/Footer.jsx';
+import FocusOnCode from '../components/LandingPageUI/FocusOnCode.jsx';
+import SummaryReport from '../components/LandingPageUI/SummaryReport.jsx';
 
 const LandingPage = ({ isDarkMode, toggleDarkMode }) => {
   const dockItems = [
