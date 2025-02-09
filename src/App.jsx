@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
-import LandingPage from "./pages/LandingPage";
-import './App.css';
-import Login from './pages/Login';
-import CustomRadialBarChart from './components/Custom Component/CustomRadialBarChart';
-import CustomLineChart from './components/Custom Component/CustomLineChart';
-import CustomAreaGraph from './components/Custom Component/CustomAreaGraph';
-import CustomBarGraph from './components/Custom Component/CustomBarGraph';
-import CustomPieChart from './components/Custom Component/CustomPieChart';
-import CalendarView from './components/Custom Component/CalendarView';
-import CalendarDashboard from './components/Custom Component/CalendarDashboard';
-// import { ResponsiveContainer } from 'recharts';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/ui/Navbar";
+import LandingPage from "./pages/Landing/LandingPage";
+import './App.css'
+import Login from './pages/Login'
+import CalendarComponent from "./components/profileComponents/CalendarComponent";
+
+import CustomRadialBarChart from './components/CustomRadialBarChart'
+import CustomLineChart from './components/CustomLineChart'
+import CustomAreaGraph from './components/CustomAreaGraph'
+import CustomBarGraph from './components/CustomBarGraph'
+import CustomPieChart from './components/CustomPieChart'
+import CalendarView from './components/CalendarView'
+import CalendarDashboard from './components/CalendarDashboard'
+// import { ResponsiveContainer } from 'recharts'
 import Compiler from './components/Editor/Compiler';
+
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -21,16 +24,6 @@ const App = () => {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle('dark', !isDarkMode);
   };
-
-  return (
-    <Router>
-      <AppContent isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-    </Router>
-  );
-};
-
-const AppContent = ({ isDarkMode, toggleDarkMode }) => {
-  const location = useLocation();
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>

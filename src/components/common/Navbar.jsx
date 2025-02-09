@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = ({ isDarkMode }) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-8">
           <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-black'}`}>Logo</span>
-          
+
           <div className="hidden md:flex gap-6">
             <a href="#" className={`${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Profile</a>
             <a href="#" className={`${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Manage Contest</a>
@@ -22,12 +23,26 @@ const Navbar = ({ isDarkMode }) => {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
+          {/* <Link to={login} >
           <button className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black border-black' : 'bg-black text-white border-white'}`}>
             <a href="#" className={`${isDarkMode ? 'text-black hover:text-gray-300' : 'text-white hover:text-gray-700'}`}>Sign-Up</a>
           </button>
-          <a href="/login" className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-700'}`}>
+          </Link>
+          <Link to={login} >
+          <a href="#" className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-700'}`}>
             Log-In
           </a>
+          </Link> */}
+          <Link to="calendar">
+            <button className={`px-4 py-2 rounded-md border ${isDarkMode ? 'bg-white text-black border-black hover:bg-gray-300' : 'bg-black text-white border-white hover:bg-gray-700'}`}>
+              Sign-Up
+            </button>
+          </Link>
+          <Link to="login">
+            <button className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-700'}`}>
+              Log-In
+            </button>
+          </Link>
         </div>
 
         <div className="md:hidden flex items-center gap-4">
