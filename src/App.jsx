@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
 import LandingPage from "./pages/Landing/LandingPage";
@@ -34,4 +35,4 @@ const App = () => {
   );
 };
 
-export default App;import { useState } from 'react'
+export default App;
