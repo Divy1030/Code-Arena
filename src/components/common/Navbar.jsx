@@ -25,7 +25,7 @@ const Navbar = ({ isDarkMode }) => {
           <button className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black border-black' : 'bg-black text-white border-white'}`}>
             <a href="#" className={`${isDarkMode ? 'text-black hover:text-gray-300' : 'text-white hover:text-gray-700'}`}>Sign-Up</a>
           </button>
-          <a href="#" className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-700'}`}>
+          <a href="/login" className={`px-4 py-2 rounded-md ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-700'}`}>
             Log-In
           </a>
         </div>
@@ -45,7 +45,7 @@ const Navbar = ({ isDarkMode }) => {
           <a href="#" className={`block mb-2 ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Manage Contest</a>
           <a href="#" className={`block mb-2 ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Create Contest</a>
           <a href="#" className={`block mb-2 ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>For developers</a>
-          <a href="#" className={`block mb-2 ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Sign in</a>
+          {/* <a href="/login" className={`block mb-2 ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'}`}>Sign in</a> */}
         </div>
       )}
     </nav>
