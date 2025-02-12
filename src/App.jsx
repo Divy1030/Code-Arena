@@ -13,6 +13,7 @@ import CalendarView from './components/Custom Component/CalendarView';
 import CalendarDashboard from './components/Custom Component/CalendarDashboard';
 // import { ResponsiveContainer } from 'recharts';
 import Compiler from './components/Editor/Compiler';
+import InstructionsPage from "./pages/InstructionsPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -39,6 +40,7 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/" element={<LandingPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
         <Route path="/login" element={<Login isDarkMode={isDarkMode} />} />
         <Route path="/cp" element={<Compiler />} />
+        <Route path="/instruction" element={<InstructionsPage />} />
       </Routes>
     </div>
   );
