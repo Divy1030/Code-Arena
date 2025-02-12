@@ -1,61 +1,73 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { Instagram, Twitter, Linkedin } from 'lucide-react';
 
-const Footer = ({ isDarkMode }) => {
+const Footer = () => {
+  const navItems = {
+    Product: ['Features', 'Contests', 'Problems', 'Leaderboard'],
+    'About Us': []
+  };
+
+  const socialIcons = [
+    { Icon: Instagram, href: '#' },
+    { Icon: Twitter, href: '#' },
+    { Icon: Linkedin, href: '#' },
+    // { Icon: Discord, href: '#' }
+  ];
+
   return (
-    <footer className={`py-10 px-4 sm:px-6 lg:px-8 text-white bg-[#01062e]`}>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-        <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-          <h3 className="text-lg font-medium text-white">Products</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="hover:text-white">Screen</a></li>
-            <li><a href="#" className="hover:text-white">SkillUp</a></li>
-            <li><a href="#" className="hover:text-white">Plagiarism Detection</a></li>
-            <li><a href="#" className="hover:text-white">Real World Question</a></li>
-          </ul>
+    <footer className="bg-[#00072E] text-gray-400 py-8 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Logo and Description */}
+        <div className="col-span-1 md:col-span-2">
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+              <span className="text-white text-xl">◁</span>
+            </div>
+            <span className="text-white text-xl font-semibold">CodeArena</span>
+          </div>
+          <p className="text-sm mb-6">
+            Empowering developers to improve their <br /> coding skills through competitive <br /> programming.
+          </p>
+          <div className="flex space-x-4">
+            {socialIcons.map(({ Icon, href }, index) => (
+              <a 
+                key={index} 
+                href={href}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-          <h3 className="text-lg font-medium text-white">Solutions</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="hover:text-white">Set up a skills strategy</a></li>
-            <li><a href="#" className="hover:text-white">Showcase your talent brand</a></li>
-            <li><a href="#" className="hover:text-white">Enhance your internal skills</a></li>
-          </ul>
-        </div>
-        <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-          <h3 className="text-lg font-medium text-white">Resources</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="hover:text-white">Blog</a></li>
-            <li><a href="#" className="hover:text-white">Customer stories</a></li>
-            <li><a href="#" className="hover:text-white">Integrations</a></li>
-            <li><a href="#" className="hover:text-white">What's new</a></li>
-          </ul>
-        </div>
-        <div className="col-span-1 sm:col-span-1 lg:col-span-1">
-          <h3 className="text-lg font-medium text-white">About us</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="hover:text-white">Careers</a></li>
-            <li><a href="#" className="hover:text-white">Newsroom</a></li>
-            <li><a href="#" className="hover:text-white">Status</a></li>
-            <li><a href="#" className="hover:text-white">Trust</a></li>
-          </ul>
-        </div>
-        <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-          <h3 className="text-lg font-medium text-white">Get started</h3>
-          <ul className="mt-4 space-y-2">
-            <li><a href="#" className="hover:text-white">Sign-Up</a></li>
-            <li><a href="#" className="hover:text-white">Log-In</a></li>
-          </ul>
-        </div>
+
+        {/* Navigation Links */}
+        {Object.entries(navItems).map(([title, items]) => (
+          <div key={title}>
+            <h3 className="text-white font-semibold mb-4">{title}</h3>
+            <ul className="space-y-2">
+              {items.map(item => (
+                <li key={item}>
+                  <a href="#" className="hover:text-white transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-      <div className="flex justify-center mt-8">
-        <div className="text-2xl font-bold text-white mb-4">Follow us</div>
-      </div>
-      <div className="flex justify-center space-x-4">
-        <a href="#" className="text-gray-400 hover:text-white"><FaFacebook size={24} /></a>
-        <a href="#" className="text-gray-400 hover:text-white"><FaTwitter size={24} /></a>
-        <a href="#" className="text-gray-400 hover:text-white"><FaLinkedin size={24} /></a>
-        <a href="#" className="text-gray-400 hover:text-white"><FaInstagram size={24} /></a>
+
+      {/* Bottom Bar */}
+      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <p className="text-sm mb-4 md:mb-0">
+          © 2024 CodeArena. All rights reserved.
+        </p>
+        <div className="flex space-x-6 text-sm">
+          <a href="#" className="hover:text-white transition-colors">Terms</a>
+          <a href="#" className="hover:text-white transition-colors">Privacy</a>
+          <a href="#" className="hover:text-white transition-colors">Cookies</a>
+        </div>
       </div>
     </footer>
   );

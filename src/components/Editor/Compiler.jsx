@@ -208,7 +208,7 @@ const Compiler = () => {
         {!isFullScreen && (!isMobile || activeView === 'problem') && (
           <div className={`p-4 ${isMobile ? 'w-full' : 'w-1/2'} overflow-auto h-screen`}>
             <div className="lg:h-full sm:h-screen pr-4">
-              <div className="bg-[#03061d] p-4 rounded-lg mb-4 overflow-y-auto max-h-[31rem]">
+              <div className="bg-[#03061d] p-4 rounded-lg mb-4 overflow-y-auto max-h-[55rem]">
                 <div className="flex justify-between items-center mb-4 gap-2">
                   <h1 className="text-xl font-semibold">Two Sum</h1>
                   <div className="flex items-center gap-4">

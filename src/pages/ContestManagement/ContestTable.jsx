@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FileCode, EditIcon, TrashIcon, Files,Users } from 'lucide-react';
+import { FileCode, EditIcon, TrashIcon, Files, Users, Clock4, CalendarDays } from 'lucide-react';
 
 const ContestTable = () => {
-  const [selectedContests, setSelectedContests] = useState([]);
+  const [selectedPage, setSelectedPage] = useState(1);
   const contests = [
     {
       name: 'Advanced Algorithm Challenge',
@@ -35,18 +35,18 @@ const ContestTable = () => {
   ];
 
   const getStatusColor = (status) => {
-    switch(status) {
-      case 'Active': return 'text-green-500';
-      case 'Upcoming': return 'text-blue-500';
-      case 'Ended': return 'text-red-500';
+    switch (status) {
+      case 'Active': return 'text-[#166534] bg-[#DCFCE7] rounded-3xl p-2';
+      case 'Upcoming': return 'text-[#1E40AF] bg-[#DBEAFE] rounded-3xl p-2';
+      case 'Ended': return 'text-[#EF4444] bg-red-200 rounded-3xl p-2';
       default: return 'text-gray-500';
     }
   };
 
   return (
-    <div className="bg-[#131A2B] rounded-lg overflow-x-auto">
+    <div className="bg-[#131A2B] overflow-x-auto">
       <table className="w-full text-white">
-        <thead className="bg-[#1E2536] text-gray-400">
+        <thead className="bg-[#353B5F] text-[#DADADA]">
           <tr>
             {['CONTEST NAME', 'DATE', 'DURATION', 'PARTICIPANTS', 'STATUS', 'ACTIONS'].map(header => (
               <th key={header} className="p-4 text-left">{header}</th>
@@ -55,16 +55,28 @@ const ContestTable = () => {
         </thead>
         <tbody>
           {contests.map((contest, index) => (
-            <tr key={index} className="border-b border-[#1E2536] hover:bg-[#1E2536]/50">
+            <tr key={index} className="border-b-2 border-[#000] bg-[#03071C]">
               <td className="p-4 flex items-center">
                 <FileCode className="mr-2 bg-[#DBEAFE] w-10 h-10 rounded p-2 text-[#2563EB]" />
                 {contest.name}
               </td>
-              <td className="p-4">{contest.date}</td>
-              <td className="p-4">{contest.duration}</td>
-              <td className="p-4 flex gap-3">{contest.participants}<Users className='w-6 h-6'/></td>
               <td className="p-4">
-                <span className={`${getStatusColor(contest.status)} font-bold`}>
+                <span className='flex items-center gap-2'>
+                  <CalendarDays className='w-6 h-6' />{contest.date}
+                </span>
+              </td>
+              <td className="p-4">
+                <span className='flex items-center gap-2'>
+                  <Clock4 className='w-5 h-5' />{contest.duration}
+                </span>
+              </td>
+              <td className="p-4">
+                <span className='flex items-center gap-2'>
+                  {contest.participants}<Users className='w-6 h-6' />
+                </span>
+              </td>
+              <td className="p-4">
+                <span className={`${getStatusColor(contest.status)} font-semibold pointer-cursor`}>
                   {contest.status}
                 </span>
               </td>
@@ -77,20 +89,23 @@ const ContestTable = () => {
           ))}
         </tbody>
       </table>
-      <div className="p-4 text-gray-400">
-        Showing 1 to 4 of 24 entries
-      </div>
-      <div className="flex justify-end p-4 space-x-2">
-        <button className="px-4 py-2 bg-[#1E2536] text-white rounded">Previous</button>
-        {[1, 2, 3].map(page => (
-          <button 
-            key={page} 
-            className="px-4 py-2 bg-blue-500 text-white rounded"
-          >
-            {page}
-          </button>
-        ))}
-        <button className="px-4 py-2 bg-[#1E2536] text-white rounded">Next</button>
+      <div className="flex justify-between items-center p-4 text-white bg-[#03071C]">
+        <div>
+          Showing 1 to 4 of 24 entries
+        </div>
+        <div className="flex space-x-2">
+          <button className="px-4 py-2 bg-[#353B5F] text-white rounded">Previous</button>
+          {[1, 2, 3].map(page => (
+            <button
+              key={page}
+              onClick={() => setSelectedPage(page)}
+              className={`px-4 py-2 text-white rounded ${selectedPage === page ? 'bg-[#0D1439]' : 'bg-[#353B5F]'}`}
+            >
+              {page}
+            </button>
+          ))}
+          <button className="px-4 py-2 bg-[#353B5F] text-white rounded">Next</button>
+        </div>
       </div>
     </div>
   );
