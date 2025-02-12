@@ -6,10 +6,10 @@ import { Button } from '../ui/button';
 function Instructions() {
     return (
         <div className="bg-[#0D1439] text-white min-h-screen w-full">
-            <div className="px-10 md:px-[10%]">
+            <div className="px-5 md:px-[10%] sm:px-10">
                 {/* HERO */}
                 <header className="text-center pt-5">
-                    <p className="text-4xl font-semibold">Advanced Algorithm Contest</p>
+                    <p className="text-3xl sm:text-5xl font-semibold">Advanced Algorithm Contest</p>
                     <div className="flex flex-wrap gap-4 text-base justify-center mt-3">
                         <p className="flex items-center gap-2"><Clock3 size={18} color="#2563EB" /> <span>Duration: 3 hours</span></p>
                         <p className="flex items-center gap-2"><Trophy size={18} color="#2563EB" /> <span>Difficulty: Advanced</span></p>
@@ -54,7 +54,7 @@ function Instructions() {
                     </section>
                 </div>
                 <div className=" mt-10 flex">
-                    <section className="w-full border border-black  rounded-lg bg-[#121B38] p-6 flex gap-[26%]">
+                    <section className="w-full border border-black  rounded-lg bg-[#121B38] p-6 flex sm:gap-[5%] md:gap-[15%] lg-[265] flex-wrap">
                         <div className="">
                             <p className="text-xl font-semibold  flex gap-2 items-center"><CircleAlert size={25} color="#2563EB" />Rules and Guidelines</p>
                             <p className='mb-3 text-lg mt-2 font-normal'>Allowed</p>
@@ -78,8 +78,8 @@ function Instructions() {
 
                 <section className="w-full border mt-10 border-black  rounded-lg bg-[#121B38] p-6">
                     <p className="text-xl font-semibold mb-3 flex items-center gap-2"><CircleHelp color="#2563EB" />Frequently Asked Questions</p>
-                    <div className="flex gap-[9.2%]">
-                        <div className=" space-y-4">
+                    <div className="flex gap-[9.2%] flex-wrap">
+                        <div className=" space-y-4 mb-5">
                             <div className="">
                                 <p className='text-[#2563EB]'>What happens if I lose internet connection?</p>
                                 <p>Your prosgress is automatically saved. You can resume once reconnected.</p>
