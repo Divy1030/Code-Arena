@@ -7,7 +7,7 @@ import ShinyText from '../components/animations/ShinyText.jsx';
 import Footer from '../components/common/Footer.jsx';
 import FocusOnCode from '../components/LandingPageUI/FocusOnCode.jsx';
 import SummaryReport from '../components/LandingPageUI/SummaryReport.jsx';
-import RiveAnimation from '../components/animations/RiveAnimation.jsx';
+// import RiveAnimation from '../components/animations/RiveAnimation.jsx';
 import Hyperspeed from '@/components/animations/HyperSpeed/Hyperspeed.jsx';
 
 const LandingPage = ({ isDarkMode, toggleDarkMode }) => {
@@ -51,7 +51,7 @@ const LandingPage = ({ isDarkMode, toggleDarkMode }) => {
       {/* <SpotlightComponent isDarkMode={isDarkMode} /> */}
       <SkillsSection isDarkMode={isDarkMode} />
       <FocusOnCode isDarkMode={isDarkMode} />
-      <SummaryReport isDarkMode={isDarkMode} />
+      {/* <SummaryReport isDarkMode={isDarkMode} /> */}
       <Footer isDarkMode={isDarkMode} />
     </div>
   );

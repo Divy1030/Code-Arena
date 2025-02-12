@@ -1,6 +1,6 @@
 import React from 'react';
-import ContestCard from './ContestCard';
-import homeAni from '../../pages/Home/homeAni.svg';
+import ContestCard from './ContestCard.jsx'
+import HomeAnimation from '../../assets/HomeAnimation.svg';
 
 const HomePage = () => {
   return (
@@ -21,7 +21,7 @@ const HomePage = () => {
           </div>
           {/* Placeholder for image section */}
           <div className="rounded-lg h-80 flex items-center justify-center">
-            <img src={homeAni} alt="Home Animation" className="h-full w-full object-contain" />
+            <img src={HomeAnimation} alt="Home Animation" className="h-full w-full object-contain" />
           </div>
         </div>
       </div>

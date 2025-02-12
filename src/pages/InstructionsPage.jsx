@@ -1,12 +1,12 @@
 import Instructions from '@/components/instructionPage/Instructions'
-import Navbar from '@/components/instructionPage/Navbar'
+// import Navbar from '@/components/instructionPage/Navbar'
 import React from 'react'
 
 function InstructionsPage() {
     return (
         <>
 
-            <Navbar />
+            {/* <Navbar /> */}
             <Instructions />
 
         </>

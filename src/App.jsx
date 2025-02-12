@@ -17,6 +17,7 @@ import Compiler from './components/Editor/Compiler';
 import InstructionsPage from "./pages/InstructionsPage";
 import HomePage from "./pages/Home/HomePage";
 import ContestManagementDashboard from "./pages/ContestManagement/ContestManagementDashboard";
+import ContestProblemPage from "./pages/ContestManagement/ContestProblemPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -48,6 +49,8 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/instruction" element={<InstructionsPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/cmd" element={<ContestManagementDashboard />} />
+        
+        <Route path="cpp" element={<ContestProblemPage />} />
       </Routes>
     </div>
   );
