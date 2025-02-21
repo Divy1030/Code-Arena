@@ -41,8 +41,6 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/" element={<LandingPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
         <Route path="/login" element={<Login isDarkMode={isDarkMode} />} />
         <Route path="/cp" element={<Compiler />} />
-        
-        {/* ✅ Merged Routes */}
         <Route path="/instruction" element={<InstructionsPage />} />
       </Routes>
     </div>
