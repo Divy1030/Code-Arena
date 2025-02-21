@@ -11,10 +11,10 @@ import CustomBarGraph from './components/Custom Component/CustomBarGraph';
 import CustomPieChart from './components/Custom Component/CustomPieChart';
 import CalendarView from './components/Custom Component/CalendarView';
 import CalendarDashboard from './components/Custom Component/CalendarDashboard';
-// import { ResponsiveContainer } from 'recharts';
 import Compiler from './components/Editor/Compiler';
+
+// ✅ Merged Import Statements
 import InstructionsPage from "./pages/InstructionsPage";
-import LeaderBoardPage from "./pages/LeaderBoardPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -41,8 +41,9 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/" element={<LandingPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
         <Route path="/login" element={<Login isDarkMode={isDarkMode} />} />
         <Route path="/cp" element={<Compiler />} />
+        
+        {/* ✅ Merged Routes */}
         <Route path="/instruction" element={<InstructionsPage />} />
-        <Route path="/leader" element={<LeaderBoardPage />} />
       </Routes>
     </div>
   );

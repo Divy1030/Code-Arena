@@ -3,7 +3,7 @@ import TrueFocus from '../animations/TrueFocus';
 
 const SpotlightComponent = ({ isDarkMode }) => {
   return (
-    <div className={`w-full mx-auto text-center px-4 py-16 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
+    <div className={`w-full mx-auto text-center px-4 py-16 bg-white`}>
       <div className={`inline-block px-4 py-1 rounded-full ${isDarkMode ? 'bg-white text-black' : 'bg-blue-100 text-blue-600'} text-sm font-medium mb-8`}>
         CODING PRACTICE
       </div>
