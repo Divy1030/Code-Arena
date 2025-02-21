@@ -54,7 +54,7 @@ function Instructions() {
                     </section>
                 </div>
                 <div className=" mt-10 flex">
-                    <section className="w-full border border-black  rounded-lg bg-[#121B38] p-6 flex sm:gap-[5%] md:gap-[15%] lg-[265] flex-wrap">
+                    <section className="w-full border border-black  rounded-lg bg-[#121B38] p-6 flex sm:gap-[5%] md:gap-[15%] lg:gap-[26%] flex-wrap">
                         <div className="">
                             <p className="text-xl font-semibold  flex gap-2 items-center"><CircleAlert size={25} color="#2563EB" />Rules and Guidelines</p>
                             <p className='mb-3 text-lg mt-2 font-normal'>Allowed</p>
