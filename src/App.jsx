@@ -14,6 +14,7 @@ import CalendarDashboard from './components/Custom Component/CalendarDashboard';
 // import { ResponsiveContainer } from 'recharts';
 import Compiler from './components/Editor/Compiler';
 import InstructionsPage from "./pages/InstructionsPage";
+import LeaderBoardPage from "./pages/LeaderBoardPage";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -41,6 +42,7 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/login" element={<Login isDarkMode={isDarkMode} />} />
         <Route path="/cp" element={<Compiler />} />
         <Route path="/instruction" element={<InstructionsPage />} />
+        <Route path="/leader" element={<LeaderBoardPage />} />
       </Routes>
     </div>
   );
