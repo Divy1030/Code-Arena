@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../../assets/image 3.png'
 
 const Navbar = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const Navbar = ({ isDarkMode }) => {
     <nav className={`px-6 py-4 border-b ${isDarkMode ? 'bg-black border-black border-b-white' : 'bg-[#00072e] border-gray-200 border-b-black'} md:px-0`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-white'}`}>Logo</span>
+          <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-white'}`}><img src={logo} alt='csilogo' /></span>
           <span className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-white'}`}>CodeArena</span>
         </div>
 

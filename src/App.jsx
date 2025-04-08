@@ -18,6 +18,8 @@ import InstructionsPage from "./pages/InstructionsPage";
 import HomePage from "./pages/Home/HomePage";
 import ContestManagementDashboard from "./pages/ContestManagement/ContestManagementDashboard";
 import ContestProblemPage from "./pages/ContestManagement/ContestProblemPage";
+import AdminHome from "./pages/Admin/AdminHome";
+import ContestScorecard from "./pages/Admin/ContestScorecard";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -44,12 +46,11 @@ const AppContent = ({ isDarkMode, toggleDarkMode }) => {
         <Route path="/" element={<LandingPage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
         <Route path="/login" element={<Login isDarkMode={isDarkMode} />} />
         <Route path="/cp" element={<Compiler />} />
-        
+        <Route path="/admin" element={<ContestScorecard />} />
         {/* ✅ Merged Routes */}
         <Route path="/instruction" element={<InstructionsPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/cmd" element={<ContestManagementDashboard />} />
-        
         <Route path="cpp" element={<ContestProblemPage />} />
       </Routes>
     </div>
